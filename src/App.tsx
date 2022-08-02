@@ -6,9 +6,16 @@ import "./styles.css";
 
 export default function App() {
   return (
-    <div className="flex flex-col items-center max-w-lg">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        maxWidth: "32rem"
+      }}
+    >
       {/* prettier-ignore */}
-      <p className="mt-8 mb-16 text-gray-600">This sandbox shows examples of <strong><code>ComboBox</code></strong>, <strong><code>Select</code></strong>, and <strong><code>SearchAutocomplete</code></strong> components built with <a href="https://react-spectrum.adobe.com/react-aria/" rel="noreferrer" target="_blank" className="text-blue-700 underline">React Aria</a> and <a href="http://tailwindcss.com/" rel="noreferrer" target="_blank" className="text-blue-700 underline">Tailwind CSS</a>. They all share the same <code>Popover</code> and <code>ListBox</code> components, which are used to show their options.</p>
+      <p style={{marginTop: '2rem', marginBottom:'4rem',color: 'rgb(75 85 99)'}}>This sandbox shows examples of <strong><code>ComboBox</code></strong>, <strong><code>Select</code></strong>, and <strong><code>SearchAutocomplete</code></strong> components built with <a href="https://react-spectrum.adobe.com/react-aria/" rel="noreferrer" target="_blank" style={{	color: 'rgb(29 78 216)',textDecorationLine: 'underline'}}>React Aria</a> and <a href="http://tailwindcss.com/" rel="noreferrer" target="_blank" style={{	color: 'rgb(29 78 216)',textDecorationLine: 'underline'}} >Tailwind CSS</a>. They all share the same <code>Popover</code> and <code>ListBox</code> components, which are used to show their options.</p>
       <ComboBox label="Favorite Animal">
         <Item key="red panda">Red Panda</Item>
         <Item key="cat">Cat</Item>

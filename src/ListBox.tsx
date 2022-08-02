@@ -5,6 +5,7 @@ import type { ListState } from "react-stately";
 import type { Node } from "@react-types/shared";
 import { useListBox, useListBoxSection, useOption } from "react-aria";
 import { CheckIcon } from "@heroicons/react/solid";
+import "./styles.css";
 
 interface ListBoxProps extends AriaListBoxOptions<unknown> {
   listBoxRef?: React.RefObject<HTMLUListElement>;
@@ -30,7 +31,12 @@ export function ListBox(props: ListBoxProps) {
     <ul
       {...listBoxProps}
       ref={listBoxRef}
-      className="max-h-72 overflow-auto outline-none"
+      style={{
+        maxHeight: "18rem",
+        overflow: "auto",
+        outline: "2px solid transparent",
+        outlineOffset: "2px"
+      }}
     >
       {[...state.collection].map((item) =>
         item.type === "section" ? (
@@ -51,11 +57,19 @@ function ListBoxSection({ section, state }: SectionProps) {
 
   return (
     <>
-      <li {...itemProps} className="pt-2">
+      <li {...itemProps} style={{ paddingTop: "0.5rem" }}>
         {section.rendered && (
           <span
             {...headingProps}
-            className="text-xs font-bold uppercase text-gray-500 mx-3"
+            style={{
+              fontSize: "0.75rem",
+              lineHeight: "1rem",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              color: "rgb(107 114 128)",
+              marginLeft: "0.75rem",
+              marginRight: "0.75rem"
+            }}
           >
             {section.rendered}
           </span>
@@ -80,24 +94,44 @@ function Option({ item, state }: OptionProps) {
     ref
   );
 
-  let text = "text-gray-700";
+  let text = "textGrey700";
   if (isFocused || isSelected) {
-    text = "text-pink-600";
+    text = "textPink600";
   } else if (isDisabled) {
-    text = "text-gray-200";
+    text = "textGrey200";
   }
 
   return (
     <li
       {...optionProps}
       ref={ref}
-      className={`m-1 rounded-md py-2 px-2 text-sm outline-none cursor-default flex items-center justify-between ${text} ${
-        isFocused ? "bg-pink-100" : ""
-      } ${isSelected ? "font-bold" : ""}`}
+      className={`${text} ${isFocused ? "bgPink100" : ""} ${
+        isSelected ? "fontBold" : ""
+      }`}
+      style={{
+        margin: "0.25rem",
+        borderRadius: "0.375rem",
+        padding: "0.5rem",
+        fontSize: "0.875rem",
+        lineHeight: "1.25rem",
+        outline: "2px solid transparent",
+        outlineOffset: "2px",
+        cursor: "default",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between"
+      }}
     >
       {item.rendered}
       {isSelected && (
-        <CheckIcon aria-hidden="true" className="w-5 h-5 text-pink-600" />
+        <CheckIcon
+          aria-hidden="true"
+          style={{
+            width: "1.25rem",
+            height: "1.25rem",
+            color: "rgb(219 39 119)"
+          }}
+        />
       )}
     </li>
   );

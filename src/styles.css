@@ -10,3 +10,42 @@ input::-webkit-search-cancel-button,
 input::-webkit-search-decoration {
   -webkit-appearance: none;
 }
+.bgWhite {
+  background-color: white;
+}
+.borderPink500 {
+  border-color: rgb(236 72 153);
+}
+.borderGrey100 {
+  border-color: rgb(243 244 246);
+}
+.borderGrey300 {
+  border-color: rgb(209 213 219);
+}
+.textPink500 {
+  color: rgb(236 72 153);
+}
+.textPink600 {
+  color: rgb(219 39 119);
+}
+.textGrey500 {
+  color: rgb(107 114 128);
+}
+.textGrey800 {
+  color: rgb(31 41 55);
+}
+.textGrey600:hover {
+  color: rgb(75 85 99);
+}
+.textGrey200 {
+  color: rgb(229 231 235);
+}
+.textGrey700 {
+  color: rgb(55 65 81);
+}
+.bgPink100 {
+  background-color: rgb(252 231 243);
+}
+.fontBold {
+  font-weight: 700;
+}

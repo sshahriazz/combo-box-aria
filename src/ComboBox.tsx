@@ -3,7 +3,7 @@ import type { ComboBoxProps } from "@react-types/combobox";
 import { useComboBoxState } from "react-stately";
 import { useComboBox, useFilter, useButton } from "react-aria";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-
+import "./styles.css";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
@@ -37,33 +37,70 @@ export function ComboBox<T extends object>(props: ComboBoxProps<T>) {
   let { buttonProps } = useButton(triggerProps, buttonRef);
 
   return (
-    <div className="inline-flex flex-col relative">
+    <div
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        position: "relative"
+      }}
+    >
       <label
         {...labelProps}
-        className="block text-sm font-medium text-gray-700 text-left"
+        style={{
+          display: "block",
+          fontSize: "0.875rem",
+          lineHeight: "1.25rem",
+          fontWeight: 500,
+          color: "rgb(55 65 81)",
+          textAlign: "left"
+        }}
       >
         {props.label}
       </label>
       <div
-        className={`relative inline-flex flex-row rounded-md overflow-hidden shadow-sm border-2 ${
-          state.isFocused ? "border-pink-500" : "border-gray-300"
-        }`}
+        className={`${state.isFocused ? "borderPink500" : "borderGrey300"}`}
+        style={{
+          position: "relative",
+          display: "inline-flex",
+          flexDirection: "row",
+          borderRadius: "0.375rem",
+          overflow: "hidden",
+          boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+          borderWidth: "2px"
+        }}
       >
         <input
           {...inputProps}
           ref={inputRef}
-          className="outline-none px-3 py-1"
+          style={{
+            outline: "2px solid transparent",
+            outlineOffset: "2px",
+            paddingLeft: "0.75rem",
+            paddingRight: "0.75rem",
+            paddingTop: "0.25rem",
+            paddingBottom: "0.25rem"
+          }}
         />
         <button
           {...buttonProps}
           ref={buttonRef}
-          className={`px-1 bg-gray-100 cursor-default border-l-2 ${
+          className={`${
             state.isFocused
-              ? "border-pink-500 text-pink-600"
-              : "border-gray-300 text-gray-500"
+              ? "borderPink500 textPink600"
+              : "borderGrey300 textGrey500"
           }`}
+          style={{
+            paddingLeft: "0.25rem",
+            paddingRight: "0.25rem",
+            backgroundColor: "rgb(243 244 246)",
+            cursor: "default",
+            borderLeftWidth: "2px"
+          }}
         >
-          <ChevronDownIcon className="w-5 h-5" aria-hidden="true" />
+          <ChevronDownIcon
+            style={{ width: "1.25rem", height: "1.25rem" }}
+            aria-hidden="true"
+          />
         </button>
       </div>
       {state.isOpen && (

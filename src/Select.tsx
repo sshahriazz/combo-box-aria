@@ -9,7 +9,7 @@ import {
   useFocusRing
 } from "react-aria";
 import { SelectorIcon } from "@heroicons/react/solid";
-
+import "./styles.css";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
@@ -33,10 +33,26 @@ export function Select<T extends object>(props: AriaSelectProps<T>) {
   let { focusProps, isFocusVisible } = useFocusRing();
 
   return (
-    <div className="inline-flex flex-col relative w-52 mt-4">
+    <div
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        position: "relative",
+        width: "13rem",
+        marginTop: "1rem"
+      }}
+    >
       <div
         {...labelProps}
-        className="block text-sm font-medium text-gray-700 text-left cursor-default"
+        style={{
+          display: "block",
+          fontSize: "0.875rem",
+          lineHeight: "1.25rem",
+          fontWeight: 500,
+          color: "rgb(55 65 81)",
+          textAlign: "left",
+          cursor: "default"
+        }}
       >
         {props.label}
       </div>
@@ -49,24 +65,42 @@ export function Select<T extends object>(props: AriaSelectProps<T>) {
       <button
         {...mergeProps(buttonProps, focusProps)}
         ref={ref}
-        className={`p-1 pl-3 py-1 relative inline-flex flex-row items-center justify-between rounded-md overflow-hidden cursor-default shadow-sm border-2 outline-none ${
-          isFocusVisible ? "border-pink-500" : "border-gray-300"
-        } ${state.isOpen ? "bg-gray-100" : "bg-white"}`}
+        style={{
+          padding: "0.25rem",
+          paddingLeft: "0.75rem",
+          paddingTop: "0.25rem",
+          paddingBottom: "0.25rem",
+          position: "relative",
+          display: "inline-flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "between",
+          borderRadius: "0.375rem",
+          overflow: "hidden",
+          cursor: "default",
+          boxShadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+          borderWidth: "2px",
+          outline: "none"
+        }}
+        className={`
+                    ${isFocusVisible ? "borderPink500" : "borderGrey300"} ${
+          state.isOpen ? "borderGrey100" : "bgWhite"
+        }`}
       >
         <span
           {...valueProps}
-          className={`text-md ${
-            state.selectedItem ? "text-gray-800" : "text-gray-500"
-          }`}
+          className={`${state.selectedItem ? "textGrey800" : "textGrey500"}`}
         >
           {state.selectedItem
             ? state.selectedItem.rendered
             : "Select an option"}
         </span>
         <SelectorIcon
-          className={`w-5 h-5 ${
-            isFocusVisible ? "text-pink-500" : "text-gray-500"
-          }`}
+          style={{
+            width: "1.25rem",
+            height: "1.25rem"
+          }}
+          className={`${isFocusVisible ? "textPink500" : "textGrey500"}`}
         />
       </button>
       {state.isOpen && (
